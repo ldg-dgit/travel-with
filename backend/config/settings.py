@@ -39,7 +39,7 @@ SYSTEM_APPS = [
     "django.contrib.staticfiles",
 ]
 
-CUSTOM_APPS = ["houses.apps.HousesConfig", "users.apps.UsersConfig"]
+CUSTOM_APPS = ["users.apps.UsersConfig"]
 
 INSTALLED_APPS = SYSTEM_APPS + CUSTOM_APPS
 
