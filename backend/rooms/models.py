@@ -3,6 +3,26 @@ from django.db import models
 from common.models import CommonModel
 
 
+class Amenity(CommonModel):
+
+    """Amenity Definition"""
+
+    name = models.CharField(
+        max_length=200,
+    )
+    description = models.CharField(
+        max_length=200,
+        null=True,
+        blank=True,
+    )
+
+    def __str__(self) -> str:
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Amenities"
+
+
 class Room(CommonModel):
 
     """Room Model Definition"""
@@ -21,18 +41,10 @@ class Room(CommonModel):
             "Shared Room",
         )
 
-    class Amenity(CommonModel):
-
-        """Amenity Definition"""
-
-        name = models.CharField(
-            max_length=200,
-        )
-        description = models.CharField(
-            max_length=200,
-            null=True,
-        )
-
+    name = models.CharField(
+        max_length=200,
+        default="",
+    )
     country = models.CharField(
         max_length=100,
         default="한국",
@@ -52,7 +64,7 @@ class Room(CommonModel):
         default=False,
     )
     kind = models.CharField(
-        max_length=20,
+        max_length=200,
         choices=RoomKindChoices.choices,
     )
     owner = models.ForeignKey(
@@ -62,3 +74,6 @@ class Room(CommonModel):
     amenities = models.ManyToManyField(
         "rooms.Amenity",
     )
+
+    def __str__(self) -> str:
+        return self.name
