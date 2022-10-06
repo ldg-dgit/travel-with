@@ -23,6 +23,7 @@ class RoomAdmin(admin.ModelAdmin):
         "amenities",
         "created_at",
         "updated_at",
+        "category",
     )
     readonly_fields = (
         "created_at",
